@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width  initial-scale=1.0">
+    <meta name="author" content="">
+    <meta name="description" content="">
+
+<!-- Open Graph Protocol -->
+    必須
+    <meta property="og:title" content="Our Menu"> 
+    <meta property="og:type" content="website"> 
+    <meta property="og:image" content="logo.png"> 
+    <meta property="og:url" content=""> 
+
+    <meta property="og:description" content="...is a  family-owned ..."> 
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Little Lemon">
+
+    <title> Title </title>
+    <!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
+    <link href="css/stylesheet.css" rel="stylesheet"> 
+
+</head>
+
+<body>
+
+<!-- header -->
+<header>
+    <img src="">
+    <p></p>
+</header>
+
+<!-- nav -->
+<nav id="header-nav" class="navbar">
+    <div class="container">
+        <a href="" class="" title=""><div id="logo-img" alt="Logo image"></div></a>
+    </div>
+    <div class="container">
+        <a href="" class="" title=""><div id=""></div></a>
+    </div>
+</nav>
+
+<!-- main -->
+<main>
+    <h1></h1>
+
+<section>
+    <h3></h3>
+    <p></p>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer>
+    <p></p>
+</footer>
+
+<!-- -------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------- -->
+<!-- -------------------------------------------------------------------------------------------------------------- -->
+
+<!-- 
+    course 5-4 W1 Form
+ -->
+
+<!-- FORM -->
+<p>FORM
+    >div >label >input >button // <label>包住就手機易D按<input></label> 
+
+    TYPE: email tel url date time number range color
+    Attribute: required minlength maxlength
+</p>
+
+<!-- USER -->
+<h5>USER</h5>
+<form action="" method="post">
+<div>
+    <label for="user_first_name">First Name</label>
+    <input type="text" id="user_first_name" name="user_first_name" ><br/>    
+</div>
+<div>
+    <label for="user_last_name">Last Name</label>
+    <input type="text" id="user_last_name" name="user_last_name" required><br/>    
+</div>    
+<div>
+    <label for="user_email">Email</label>
+    <input type="email" id="user_email" name="user_email" required><br/>    
+</div>
+<div>
+    <label for="user_password">Password</label>
+    <input type="password" id="user_password" name="user_password" minlength="6" maxlength="12" required><br/>
+</div>
+<div>
+    <label for="user_comfirm_password">Comfirm Password</label>
+    <input type="password" id="user_comfirm_password" name="user_comfirm_password" minlength="6" maxlength="12" required><br/>    
+</div>
+<div>
+    <button type="submit">Submit</button>
+</div>
+</form>
+<!-- 
+    input:focus:invalid {
+        border: 
+    }
+-->
+
+<!-- BOOKING -->
+<h5>BOOKING</h5>
+<form action="" method="post">
+    <fieldset id="size">
+        <label>
+        <input type="radio" name="size" value="2" id=""> 2-people-table
+        </label>
+        <label>
+            <input type="radio" name="size" value="4" id=""> 4-people-table
+        </label>
+    </fieldset>
+
+    <fieldset id="">
+        <label>
+            <input type="radio" name="" value="" id=""> 1
+        </label>
+        <label>
+            <input type="radio" name="" value="" id=""> 2
+        </label>
+        <label>
+            <input type="radio" name="" value="" id=""> 3
+        </label>
+    </fieldset>
+    <button type="submit">Book Table</button>
+</form>
+
+<h5>BOOKING</h5>
+<form action="" method="post">
+    <div>
+        <label for="booking_date"> Date </label>
+        <input type="date" id="booking_date" name="booking_date"><br/>    
+    </div>
+    <div>
+        <label for="booking_people"> People </label>
+        <input type="range" id="booking_people" name="booking_people" min="1" max="8" value="4" oninput="this.nextElementSibling.value = this.value">    <!-- 4常用 -->
+        <output>4</output>
+    </div>
+    <div>
+        <label for="booking_location">Location</label>
+        <input  id="booking_location" name="booking_location" list="locations"><br/>    
+        <datalist id="locations">
+            <option value="Hong Kong"></option>
+            <option value="Kolwoon"></option>
+            <option value="NT"></option>
+        </datalist>
+    </div>
+    <button type="submit">Book Table</button>
+</form>
+<p>--------------</p>
+<form action="" method="post">
+    <div>
+        <label for="booking_date">date</label>
+        <input type="date" name="booking_date" id="booking_date">
+    </div>
+    <div>
+        <label for="booking_people">ppl</label>
+        <input type="range" name="booking_people" id="booking_people" min="1" max="10" value="3" oninput="this.nextElementSibling.value = this.value">
+        <output>3</output>
+    </div>
+    <div>
+        <label for="locations2">location</label>
+        <input list="locations2" name="booking_location" id="booking_location">
+        <datalist id="locations2">
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+        </datalist>
+    </div>
+    <button type="submit"> BOOK </button>
+</form>
+<!-- TEMP 
+<div>
+    <label for=""></label>
+    <input type="" id="" name=""><br/>    
+</div>
+<div>
+    <label for=""></label>
+    <input type="" id="" name="" value=""><br/>    
+</div>
+-->
+
+
+<!-- table -->
+
+
+
+
+<!-- script -->
+<!-- <script src="../../bootstrap-5.3.0-dist/js/bootstrap.min.js"></script> -->
+<script src="js/script.js"></script>
+</body>
+</html>
+
+=======================================
+=======================================
+
+
+input:focus:invalid {
+    border: 
+}
+
+<div>
+    <label for="locations2">location</label>
+    <input list="locations2" name="booking_location" id="booking_location">
+    <datalist id="locations2">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+    </datalist>
+</div>
+
+
+
+
+
+Metadata cheat sheet
+HTML <meta> tags 
+Earlier in the course, you learned about meta tags and how you can leverage them to convey information to search engines to better categorize your pages. We recommend that you keep this cheat sheet handy when building your web applications. The structure of a meta tag is as follows.
+
+Name 
+The name of the property can be anything you like, although browsers usually expect a value they understand and can take an action upon. An example would be to state the author of the page. 
+Content 
+The content field specifies the property's value. For example, you can use , to specify the language of the webpage to search engines. 
+Charset 
+The charset is a special field that lets you specify the character encoding used for the page so that the browser can display it properly. The most frequently used is utf-8, and you would add it to your HTML header as follows:
+
+HTTP-equiv 
+This field stands for HTTP equivalent, and it’s used to simulate HTTP response headers. This is rare to see, and it’s recommended to use HTTP headers over HTML http-equiv meta tags. For example, the next tag would instruct the browser to refresh the page every 30 minutes: 
+
+該字段代表HTTP 等效項，用於模擬HTTP 響應標頭。這種情況很少見，建議使用 HTTP 標頭而不是 HTML http-equiv 元標記。例如，下一個標籤將指示瀏覽器每 30 分鐘刷新一次頁面：<meta http-equiv="refresh" content="30">
+
+<meta name="author" content="name"> 
+<meta name="language" content="english">
+<meta charset="UTF-8">  
+<meta http-equiv="refresh" content="30"> 
+
+Basic meta tags (meta tags For SEO) 
+<meta name="description"/> provides a brief description of the web page 
+<meta name=”title”/> specifies the title of the web page 
+<meta name="author" content="name"> specifies the author of the web page  
+<meta name="language" content="english"> specifies the language of the web page 
+
+
+<meta name="robots" content="index,follow" /> tells search engines how to crawl or index a certain page 
+<meta name="google"/> tells Google not to show the sitelinks search box for your page when showing search results 
+<meta name="googlebot" content=”notranslate” /> tells Google you don’t want to provide an automatic translation for your page if the user uses a different language  
+<meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm" /> specifies the last modified date and time on which you have made certain changes 
+<meta name="rating" content="safe for kids"> specifies the expected audience for your page 
+<meta name="copyright" content="Copyright 2022"> specifies a Copyright 
+
+
+<meta http-equiv="..."/> tags
+<meta http-equiv="content-type" content="text/html"> specifies the format of the document returned by the server 
+<meta http-equiv="default-style"/>  specifies the format of the styling document 
+<meta http-equiv="refresh"/> specifies the duration of the page before it’s considered stale 
+<meta http-equiv=”Content-language”/> specifies the language of the page 
+<meta http-equiv="Cache-Control" content="no-cache"> instructs the browser how to cache your page 
+
+Responsive design/mobile meta tags 
+<meta name="format-detection" content="telephone=yes"/> indicates that telephone numbers should appear as hypertext links that can be clicked to make a phone call 
+<meta name="HandheldFriendly" content="true"/> specifies that the page can be properly visualized on mobile devices 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> specifies the area of the window in which web content can be seen
+
+
+
+
+
+
+
+
+

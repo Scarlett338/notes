@@ -1,0 +1,454 @@
+
+練selector、responsive、排版：flex、float、置中/位置、
+menu、背景圖、footer、
+JS動態互動
+
+學：
+iframe
+陰影
+
+/********************************************** 注意事項 ********************************************************/
+注意事項注意事項注意事項
+
+.class{
+  overflow: hidden;
+  clear: both;
+  border: // 自己set野;
+  border-collapse: collapse; //只一條線
+
+}
+
+/********************************************** 基本 ********************************************************/
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+  }
+  
+body {
+    font-size: 16px;
+    color:rgb(249, 249, 249);
+    background-color: rgb(152, 0, 0);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+/*     margin: 0;       margin-top: 0;    margin-bottom: 0;    padding:0;   */
+}
+
+/* body h1, body h2, body h3, body h4, body h5, body p{
+    margin-top: 0;margin-bottom: 0;
+  } */
+
+
+/********************************************** HEADER ********************************************************/
+#header-nav {
+  background-color:goldenrod
+  border-radius: 0;
+  border: 0;
+}
+
+#logo-img {
+  background: url() no-repeat;
+  width: 150px;
+  height: 150px;
+  margin: 10px 15px 10px 0;
+}
+
+
+/********************************************** 置中 ********************************************************/
+
+方法正中間：
+.parent{
+  position: relative;
+}
+
+.chlid{
+  position: absolute; // position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+
+方法一：
+.parent{
+  width: 100%;
+  margin: 0 auto;
+  // display: flex;
+}
+
+.child{
+  display: block;
+  float: none;
+  //冇poa fixed
+}
+
+
+方法二：
+.child{
+  padding-left: 10px;
+  padding-right: 10px;
+//left: 0; 
+ right: 0;
+}
+
+
+至於文字：
+
+.parent {
+  text-align: center;  // 文字水平置中
+}
+
+.text {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+
+/********************************************** Flex ********************************************************/
+
+.parent{
+  position: relative;
+}
+
+.chlid{
+  position: absolute; /* 或relative */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+// flex特別排版
+
+
+
+.flexcontainer{
+  height: 600px;  width: 100%;  clear: both;  display: flex;  position: relative;  background-color: rgb(0, 0, 0);  color: #fff;  
+  text-align: center;  justify-content: center;  align-items: center;
+}
+
+.flextile{
+  width: 20%;  overflow: hidden;  border: 0px solid #fff;
+}
+
+.flex-end{
+  align-self: flex-end;
+}
+
+#flex1{
+  background-color: rgb(0, 0, 0);  height: 600px;
+}
+
+#flex2{
+  background-color: #2f404a;  height: 600px;
+}
+
+#flex3{
+  background-color: #669bbc;  height: 200px;
+}
+
+#flex4{
+  background-color: #2f404a;  height: 500px;  align-self: flex-end;  position: relative;  top:300px;
+}
+
+#flex5{
+  background-color: #669bbc;  height: 200px;
+}
+
+
+
+/********************************************** Float ********************************************************/
+
+/*================= 兩欄式排版 */
+
+.sidebar{
+  float:left;
+}
+
+.mainbody{
+  float:left;
+}
+
+<div style="clear:both"></div> /* 空白隔開 float 及 footer (normal) */
+或
+.container::after{
+  content:"";
+  clear: both;
+  display:block;
+}
+
+
+
+
+/*================== 三欄式排版 */
+
+.sidebarleft{
+  float: left;
+}
+
+.sidebarright{
+  float: right;
+}
+
+.mainbody{
+  margin-left:120px;
+  margin-right:120px;
+}
+
+
+
+
+
+
+/********************************************** Responsive ********************************************************/
+
+/************************************** COL *************************************/
+
+/* General CSS */
+[class*="col-"]{
+  position: relative;
+  float:left;
+  flex: 0 0 auto;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* For mobile phones: */
+.col-xxs-12{
+  width: 100%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float:left;
+  flex: 0 0 auto;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .col-xs-1 {width: 8.33%; flex:0 0 auto;}
+  .col-xs-2 {width: 16.66%; flex:0 0 auto;}
+  .col-xs-3 {width: 25%; flex:0 0 auto;}
+  .col-xs-4 {width: 33.33%; flex:0 0 auto;}
+  .col-xs-5 {width: 41.66%; flex:0 0 auto;}
+  .col-xs-6 {width: 50%; flex:0 0 auto;}
+  .col-xs-7 {width: 58.33%; flex:0 0 auto;}
+  .col-xs-8 {width: 66.66%; flex:0 0 auto;}
+  .col-xs-9 {width: 75%; flex:0 0 auto;}
+  .col-xs-10 {width: 83.33%; flex:0 0 auto;}
+  .col-xs-11 {width: 91.66%; flex:0 0 auto;}
+  .col-xs-12 {width: 100%; flex:0 0 auto;}
+  
+/*   .visible-xs{
+
+  } */
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .col-sm-1 {width: 8.33%; flex:0 0 auto;}
+  .col-sm-2 {width: 16.66%; flex:0 0 auto;}
+  .col-sm-3 {width: 25%; flex:0 0 auto;}
+  .col-sm-4 {width: 33.33%; flex:0 0 auto;}
+  .col-sm-5 {width: 41.66%; flex:0 0 auto;}
+  .col-sm-6 {width: 50%; flex:0 0 auto;}
+  .col-sm-7 {width: 58.33%; flex:0 0 auto;}
+  .col-sm-8 {width: 66.66%; flex:0 0 auto;}
+  .col-sm-9 {width: 75%; flex:0 0 auto;}
+  .col-sm-10 {width: 83.33%; flex:0 0 auto;}
+  .col-sm-11 {width: 91.66%; flex:0 0 auto;}
+  .col-sm-12 {width: 100%; flex:0 0 auto;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .col-md-1 {width: 8.33%; flex:0 0 auto;}
+  .col-md-2 {width: 16.66%; flex:0 0 auto;}
+  .col-md-3 {width: 25%; flex:0 0 auto;}
+  .col-md-4 {width: 33.33%; flex:0 0 auto;}
+  .col-md-5 {width: 41.66%; flex:0 0 auto;}
+  .col-md-6 {width: 50%; flex:0 0 auto;}
+  .col-md-7 {width: 58.33%; flex:0 0 auto;}
+  .col-md-8 {width: 66.66%; flex:0 0 auto;}
+  .col-md-9 {width: 75%; flex:0 0 auto;}
+  .col-md-10 {width: 83.33%; flex:0 0 auto;}
+  .col-md-11 {width: 91.66%; flex:0 0 auto;}
+  .col-md-12 {width: 100%; flex:0 0 auto;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .col-lg-1 {width: 8.33%; flex:0 0 auto;}
+  .col-lg-2 {width: 16.66%; flex:0 0 auto;}
+  .col-lg-3 {width: 25%; flex:0 0 auto;}
+  .col-lg-4 {width: 33.33%; flex:0 0 auto;}
+  .col-lg-5 {width: 41.66%; flex:0 0 auto;}
+  .col-lg-6 {width: 50%; flex:0 0 auto;}
+  .col-lg-7 {width: 58.33%; flex:0 0 auto;}
+  .col-lg-8 {width: 66.66%; flex:0 0 auto;}
+  .col-lg-9 {width: 75%; flex:0 0 auto;}
+  .col-lg-10 {width: 83.33%; flex:0 0 auto;}
+  .col-lg-11 {width: 91.66%; flex:0 0 auto;}
+  .col-lg-12 {width: 100%; flex:0 0 auto;}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .col-xl-1 {width: 8.33%; flex:0 0 auto;}
+  .col-xl-2 {width: 16.66%; flex:0 0 auto;}
+  .col-xl-3 {width: 25%; flex:0 0 auto;}
+  .col-xl-4 {width: 33.33%; flex:0 0 auto;}
+  .col-xl-5 {width: 41.66%; flex:0 0 auto;}
+  .col-xl-6 {width: 50%; flex:0 0 auto;}
+  .col-xl-7 {width: 58.33%; flex:0 0 auto;}
+  .col-xl-8 {width: 66.66%; flex:0 0 auto;}
+  .col-xl-9 {width: 75%; flex:0 0 auto;}
+  .col-xl-10 {width: 83.33%; flex:0 0 auto;}
+  .col-xl-11 {width: 91.66%; flex:0 0 auto;}
+  .col-xl-12 {width: 100%; flex:0 0 auto;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************************** FOOTER ********************************************************/
+
+
+
+
+
+
+
+/**********************************************  ********************************************************/
+
+/********************************************** END ********************************************************/
+
+
+
+/* 網上temp *//* 網上temp */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video { 
+  margin: 0; 
+  padding: 0; 
+  border: 0; 
+  font-size: 100%; 
+  font: inherit; vertical-align: baseline;
+  }
+  
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  display: block;
+  }
+  body {line-height: 1;}
+  ol,ul { list-style: none;}
+  blockquote,q { quotes: none;}
+  blockquote:before,blockquote:after,q:before,q:after { content: ''; content: none;}
+  table { border-collapse: collapse; border-spacing: 0;}
+  
+
+/* HW 20230619 course1 m2 */ /* HW 20230619 course1 m2 */ /* HW 20230619 course1 m2 */ 
+/************************************** General *************************************/
+*{
+  box-sizing: border-box;
+  }
+  
+body {
+  font-size: 16px;
+  color:rgb(0, 0, 0);
+  background-color:#e6e6e7;
+  font-family: 'Ubuntu Mono', monospace, sans-serif;
+  text-align: center;
+}
+
+h1{
+  font-size: 1.75em;
+}
+
+h2{
+  font-size: 1.25em;
+}
+
+/***********************************************************************/
+
+.container{
+  text-align: center;
+  background-color: red;
+}
+
+
+.menu-tile{  
+  border: 2px solid black;
+  background-color: darkgrey;
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+
+}
+
+/**************************************  responsive *************************************/
+.col-lg-4, .col-md-6, .col-sm-12{
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+
+/************************ mobile *******************************/
+@media screen and (max-width:767px) {
+  .col-sm-12{width: 100%;}
+}
+
+/************************ tablet *******************************/
+@media screen and (max-width:991px) and (min-width:768px){
+  .col-md-6{width: 50%;}
+  .col-md-12{width:100%;}
+}
+
+/************************ laptop *******************************/
+@media screen and (min-width:992px){
+  .col-lg-4 {width: 33%;}
+}
+
+
+/***********************************************************************/
+/* tile header */
+.menu-tile div{  
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+}
+
+.row div:nth-child(1) div div{
+  background-color:rgb(222, 135, 135);
+  color: black;
+}
+
+.row div:nth-child(2) div div{
+  background-color:rgb(129, 4, 4);
+  color: white;
+}
+
+.row div:nth-child(3) div div{
+  background-color:burlywood;
+  color: black;
+}
+
+/* tile text */
+.menu-tile p{
+  padding-top: 45px;
+}
+
+

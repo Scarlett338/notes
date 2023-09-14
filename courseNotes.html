@@ -1,0 +1,1940 @@
+<!DOCTYPE html><html><head>    <meta charset="UTF-8" />    <title>Notes</title></head><body><script>
+icon:
+<script src="https://kit.fontawesome.com/b64fefc893.js" crossorigin="anonymous"></script>
+
+// 必要正正extension
+code Runner
+indent-rainbow
+live Preview
+liver Server
+Styleint
+turbo Console Log
+Prettier
+
+es7 React 
+React snippets
+
+//Shortcut
+//div.my-class
+ctrl+k+c 全部有//
+交位置 alt down arrow
+copy下一行 alt shift down arrow
+
+
+
+// 網頁180日 NOTES
+
+Day0 黃尿網
+-menu z-index 999
+-timeline.html#t314 冇"/"
+-welcome:hover::before  連埋唔分開
+-唔好table包住佢，或出面 container height 100%
+
+Day1 天氣
+-fetch.then(res=>res.json())      記得()
+//-document.querySelector("#id").appendChild(div)     記得()內冇''
+//-要張form listen submit action, 唔係button listen, 所以改為 form id
+//-防止click完submit跳去另一頁, 呢度加event.preventDefault()
+-搬console.log上去listener度, 當click submit 就會show console.log
+//-push唔到野入去arr到，scope問題，要在 {}內 var
+
+Day2 angry partner
+用黎移動圖片位置 background-position: -70px 0px;
+
+Day3 排大小number
+將字串>arr(number) ->> var b = a.split(',').map(Number);
+
+Day4 layout flexbox
+//font-size一半，i classss font size改;
+//width 95% , margin auto, 父wrap
+w25% flex 1 1 50% 。 w50% flex 1 1 100% 
+//用border分隔，非margin 同 padding 
+中間突出-- padding 大過左右 10px, margin-left,right 10px
+//用space-btw已可在兩旁，不必flex: 1 1 30%之類
+//img寫% (width 300) 不用寫px  而寫30% 才有responsive效
+//撐大自己「flex: 1」
+/*layout3:
+<div container>
+    <div card>  flex 0 0 30%
+        <div con2> 0 0 250px
+        <div con2></div>
+ */
+ /* flex: 1 1 100% 原理唔多明 */
+
+Day5 fish;
+selector {
+    animation: move1 28s linear infinite;
+}
+@keyframes name {from{}to{}}
+
+Day6 lucky shrub
+
+Day7 form, canvas
+html : width height 不用px
+<body onload="draw();"></body>
+!!!!!!!!!!!! 要記得var ctx
+
+Day8 layout
+
+
+Day9 effects
+
+
+
+/* ... */
+
+其他學習記錄：
+0802 js lv1
+0806 js lv2
+星星ex
+//-arr.join("\n");
+//-var 接住 st 同時call 
+-   var result =""
+    result+= stars(i);
+-  funtion不要在function內，再call搵唔到，  for > var都係global  , function > var 自己先知，func世界只有自己
+
+//js lv3
+//再次忘記不用拆，字串本身也是陣列。
+//先set var fid=[1,2,3] 內，有基本數字 做reference
+//.splice() 可刪除陣列中的某個元素
+//留意順序，arr.push要在最外
+// 不可return console.log
+// var newArr = arr.map(x=>x-3);
+
+壓平陣列 Recursion
+function flatten(arr){
+    var result =[];
+    for (var i=0;i<arr.length;i++){
+        if (Array.isArray(arr[i])){
+            let eachArr = flatten(arr[i]);  // 這邊會得到一個陣列中的陣列
+            for (var value of eachArr){
+                result.push(value);
+            }
+        }// if
+        else {
+        result.push(arr[i])};
+    } //for    
+    return result; // 不可 console.log
+} 
+
+過三關
+if (arr[i][0]===arr[i][1] && arr[i][1]===arr[i][2])
+知道某數可以填，不必再loop over
+
+求質數
+function isPrime(x){
+    if (x===1) return false
+    for (var i=2;i<x;i++){
+        if (x%i===0){
+            return false
+        }        
+    }
+    return true
+}
+
+//要set return ，否則會不斷再 loop
+//最簡單就可，不用又 var result=true
+
+
+
+
+
+
+
+//w3resource
+
+==========================================================================
+==========================================================================
+==========================================================================
+
+//pass by value
+不影響 a
+primitives
+
+var a=7;
+var b=a;
+b=5;    (a始終=7) 除非！ a=b;
+
+//pass by reference
+影響 a
+obj
+
+/* 
+
+
+//-------------------------------------------------------==========================
+//course 1-notes 
+//Lecture 53, Part 2: DOM Manipulation
+function sayHello (event){  // ()入面要寫，而this佢係去windon
+
+var name = document.querySelector("name").value;
+var message = "'<h2>Hello' + name+'!</h2>"; `<h2> Hello ${name} !</h2>`
+
+document.querySelector("content").innerHTML = message;   // .textContent 冇html h2效果
+
+if (name==='student'){
+    var title =document.querySelector('#title').textContent;    //清空並留有本來的?
+    title += "& loveing it!";                                   //在原本既加上去
+    document.querySelector('h1').textContent = title;           // textCon 係 primitives，pass by value不會變 
+}}
+//=========================================================================
+//Lecture 54: Handling Events
+document.querySelector('button') .addEventListener('click',sayHello); 
+//當A(event)發生，pass B(fun) to it     //.......this已經指左去'click'
+function sayHello (event){ 
+    this.textContent = "Said it!";}
+//一開波就run
+document.addEventListener("DOMContentLoaded",
+ function (event){ })//上面全部塞入去，可以在 head 放script，不必放最底
+//=========================================================================
+//Lecture 55: The 'event' Argument
+document.querySelector('body').addEventListener('mousemove',function(event){
+    if (event.shiftKey=== true){ // 記得要 ==={
+        console.log(event.clientX);}}) // X軸位置
+//=========================================================================
+//Lecture 59: Fixing Mobile Nav Menu Automatic Collapse
+$ 等於 function in jQuery
+
+$(function (){
+$("#navbarToggle").blur(function(event){
+    var screenWidth = window.innerWidth;
+    if (screenWidth <768){        $("collapsable-nav").collapse('hide');    } }); });
+
+或者 document.addEventListener("DOMContentLoaded"......)
+document.querySelector("#navbarToggle").addEventListener("blur", function(event){
+    var screenWidth = window.innerWidth;
+    if (screenWidth<768){
+        $("coll")......    }})
+
+ */
+
+//=========================================================================
+//=========================================================================
+
+course 5-2 notes
+course 5-2 notes
+course 5-2 notes
+course 5-2 notes
+course 5-2 notes
+
+/* you discovered how to program with JavaScript. Let's take a few minutes to recap what you learned. In the opening module, you discovered real-world applications of JavaScript and uncovered possible job opportunities. You also learned how to install VS code on Windows so that you could code in JS. You did learned about the importance of JavaScript in programming and the different libraries used by JavaScript developers. As you progress through the lesson, you encountered key concepts in JavaScript. By engaging with these concepts you discovered how to identify and declare variables, differentiate between data types, and recognize math and logical operators. You also learned how to perform basic arithmetic using the number data type and utilize strings and Booleans. In the next lesson, you explored conditionals and loops. During your exploration of these concepts, you learned how to script different forms of JavaScript conditional statements and work with different types of loops, such as for, while, and nested. In Module 2 you explored the building blocks of a program. You began this module with a lesson on arrays, objects, and functions. During this lesson you learned how to explain the purpose of functions and describe their benefits, outline the process for building an array and accessing its contents, and you now understand the array characteristics and concatenation operators of strings, and you can now also build and call functions, create custom objects, explain how math objects work, and interact with arrays and objects. You then moved onto the next lesson in which you explored the concept of error prevention. During this lesson, you discovered how to recognize the differences between bugs and errors, demonstrate try-catch blocks, and explain the concepts of undefined, null and empty string values. The next module on programming paradigms began with the lesson on functional programming, in which you learned how to explain how the functional paradigm works, outline the concept of recursion, describe how scope operates, and explain different forms of scope such as let, const, and var. In the next lesson, you explored object oriented programming and learned the principles of object oriented programming, how to deploy classes in JavaScript, build and utilize constructors, and make use of inheritance. You then explored advanced JavaScript features in which you learned how to destruct arrays and objects, utilized for-of loops and objects, explain the concepts of template literals and data structures, and demonstrate the use of the spread and rest operators. Finally, you then explored how JavaScript operates in the browser. During this lesson, you learned how to manipulate JavaScript in the DOM, make use of JavaScript interactivity in the browser, work with events, and capture and move data around the web. In the next module, you looked at testing and compatibility. The lesson began with an introduction to testing in which you learned about the concept of testing and how to practice different types of testing, how to write a unit test, the process for writing tests with Jest, and how to apply test-driven development. You then reviewed JavaScript testing challenges in which you learned how to navigate other JS environments like Node and NPM, the concepts of webpack and transpiring, the process for working with arrow functions and classes in React, and you discovered the role the DOM plays in testing challenges, and finally, you discovered how to write tests with Jest. Well done on completing this recap. Now it's time to try out what you've learned in the graded assessment. Good luck.*/
+
+●>>> var      let                   const
+            block scope             唔可以reassign
+            要 declare先            declare 要 assign
+            不可 redeclard
+
+
+
+●>>==== 文字
+var a ="hihi";
+
+a.length            長度
+a.charAt(2)         搵咩字母
+a.substring(2-9)    2-9既字母
+
+a.indexOf("u")      搵位置(第1 match)，冇會 = -1 "ho-ho-ho".indexOf('h'); // 0
+a.lastIndexOf()     finds the last match
+
+a.concat()          "Wo".concat("rl").concat("d"); // 'World'
+a.split()           斬成為 array of sub-strings "ho-ho-ho".split("-"); // ['ho', 'ho', 'ho']
+a.toUpperCase()     greet.toUpperCase(); // "HELLO, "
+a.toLowerCase()     greet.toLowerCase(); // "hello, "
+
+a.trim()              remove the whitespace from both sides of a string. 
+
+
+
+
+●>>==== 數字
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+Math.random();  
+Math.ceil();    1.01>2
+Math.floor();
+Math.round();   四捨五入
+Math.trunc();   去掉小數點，只留下整數
+
+Math.max(3,2,5,2,3,2);  最大值
+Math.min(23.3.2.2);
+Math.abs(-10);   絕對值 變正數 10
+
+Math.pow(2,3);  2^3 =8
+Math.sqrt(16);  square root = 4
+Math.cbrt(8);   cube root =2
+
+
+Math.log();     Math.log2();    Math.log10();
+Math.sim(); cos tan .......
+
+
+Math.PI 3.14159
+Math.E  2.718
+Math.LN2  0.693 2 的自然對數
+
+
+
+
+●>>==== Boolean
+var con1 = 2>3;
+console.log(con1); // false
+
+var Hungry = true;
+Hungry = !Hungry;  // 改做false
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>呢度
+
+●>>==== Array
+0) arr.push("加咩");
+   arr.pop();       刪最後
+   arr.shift();
+   arr.unshift();
+
+   arr.indexOf("apple")  //1
+   arr.lastIndexOf()
+
+   Array.isArray(obj);  // Array.isArray([1, 2, 3]); >  true
+
+
+   3) arr.filter()  // 篩選，成新array
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const result = words.filter((word) => word.length > 6);
+// Array ["exuberant", "destruction", "present"]
+
+3) arr.map()
+
+3) arr.forEach()
+
+
+
+
+1) arr.join()  //變字串
+console.log(elements.join());
+// Expected output: "Fire,Air,Water"
+console.log(elements.join(''));
+// Expected output: "FireAirWater"
+
+1) arr.concat()   //合併
+const array3 = array1.concat(array2); 
+
+1)  arr.reverse();  原地in place反轉reverse一個陣列, is destructive -- it changes the original array
+const reversed = array1.reverse(); // ["three", "two", "one"]
+
+
+2) arr.splice(......)  方法可以藉由刪除既有元素並／或加入新元素來改變一個陣列的內容
+//array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+如索引大於陣列長度，則實際開始的索引值會被設為陣列長度。
+若索引為負，則會從陣列中最後一個元素開始往前改動（起始為 -1 且若其絕對值大於陣列的長度，則會被設為 0。
+
+var myFish = ["angel", "clown", "drum", "sturgeon"];
+
+從索引 2 的位置開始，刪除 1 個元素並插入「trumpet」
+myFish.splice(2,1,"trumpet"); //["angel", "clown", "trumpet", "sturgeon"]
+
+從索引 2 的位置開始，刪除所有元素（含索引 2
+myFish.splice(2); // ["angel", "clown"]
+
+
+2) arr.sort((a, b) => a - b)  //排序
+arr.sort() 預設的排序順序是根據字串的 Unicode 編碼位置（code points）而定。
+
+var numbers = [4, 2, 5, 1, 3];
+numbers.sort(function (a, b) {
+return a - b;
+});     //以下函式將會升冪排序陣列   //
+
+/* 
+const months = ['March', 'Jan', 'Feb', 'Dec'];
+months.sort(); //["Dec", "Feb", "Jan", "March"]
+[1, 30, 4, 21, 100000].sort(); //[1, 100000, 21, 30, 4]
+ */
+
+2) arr.flat(數字/Infinity);
+var newArray = arr.flat([depth]);
+
+const arr2 = [0, 1, [2, [3, [4, 5]]]];
+arr2.flat(2); //  [0, 1, 2, 3, Array [4, 5]]
+arr2.flat(Infinity);  //[0, 1, 2, 3, 4, 5]
+
+
+2) arr.reduce((acc,val) => acc.concat(val),[]);
+方法將一個累加器及陣列中每項元素（由左至右）傳入回呼函式，將陣列化為單一值。
+//arr.reduce(callback[accumulator, currentValue, currentIndex, array], initialValue)
+
+const array1 = [1, 2, 3, 4];
+const initialValue = 0;
+const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);// Expected output: 10
+
+
+
+//查有冇
+arr.find()          "red"
+arr.findIndex()     0
+arr.includes()      T/F
+arr.some()          
+arr.every()         
+
+
+
+●>>==== Object
+var birds = {name:"Mary",age:12}
+Object.keys(birds)
+Object.values(birds)
+Object.entries(birds) //Object.是語法！！
+
+
+
+
+
+
+●>>==== test、轉換
+1) typeof
+var test = typeof(2>3);
+console.log(test);
+
+2) parse
+num1 = parseInt(num1)    換成數字(整數)
+num1 = parseFloat()    換成數字(小數)
+
+3) isNaN()  判斷某個數值是不是 NaN  
+非數值 > true
+
+if (isNaN("asd")) {
+   console.log ('Not a Number!');
+}
+
+4)  
+toString    array1.toString();
+valueOf     
+
+var landingObj = JSON.parse(landingStr);
+var landingStr =JSON.stringify(landingObj);
+
+
+>>?強制轉換 coercion
+
+
+●>>==== if 
+
+精簡判斷
+var con1 = typeof words == 'string' && words.length >=2;
+if (con1 && con2)  { 
+}
+
+
+(expression)? ifTrue: ifFalse;
+(2>3)? console.log("岩") : console.log("錯");
+
+
+
+======================================================
+======================================================
+●●>>>Array
+// 超多用法 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays
+
+function arrBuilder (one, two, three){
+    var arr = [];
+    arr.push(one);
+    arr.push(two);
+    arr.push(three);
+    return arr;
+}
+
+var simpleArr = arrBuilder("apple","pear","banana");
+conlog(simpleArr);
+
+
+
+名.push("apple");   加1
+名.pop();           del last item
+名.inderOf("apple");
+
+const birds = ["Parrot", "Falcon", "Owl"];
+console.log(birds.indexOf("Owl")); //  2
+
+
+
+---------------------------------------------------------------------
+
+●>>>Error handling:
+例 null,        Undefined            empty values
+abc 搵 d      .log("a") 冇var          ""
+
+
+//Here are some of the most common errors in JavaScript: 
+ReferenceError      SyntaxError     TypeError       RangeError
+
+//There are some other errors in JavaScript. These other errors include: 
+AggregateError      Error       InternalError       URIError
+
+// 解決 error handling (不可用來測syntax error!!!!!!!)
+拋接波 try catch blocks             
+
+方法一
+try {                       // 發生error既地方，不會出console 
+    console.log(a+b);
+} catch(err) {              // ()內任你改名，捉住Try既error，係object黎，話你知咩error
+    // do sth
+    console.log(err);
+    console.log("有error，saved in the error log")
+}
+console.log("仲run緊，冇事");
+
+
+//如果try 內冇error，不會出catch   //no error thrown inside the  try  block, the catch  block  will not run.
+try {
+    console.log("hello");
+} catch(err) {
+    console.log ("bye");
+} //hello
+
+try {
+    throw new Error(); //拋出error， (一有throw，就係=有error，停js運行)
+    console.log("hello");
+} catch(err) {
+    console.log ("bye");
+} //bye
+
+
+------------------------------------
+方法二 //Throwing an error will stop the execution of the code.
+try {
+throw new Error("寫想出既野");  // throw statement eg. throw new ReferenceError();
+} catch(err){
+    console.log(err);
+    console.log("有error，saved in the error log");
+};
+console.log("仲run緊，冇事");
+
+
+
+例子
+function addTwoNums (a,b){
+    try{
+        if (typeof(a) !="number") {
+            throw new ReferenceError("1 not num")
+        } else if (typeof(b) !="number") {
+            throw new ReferenceError("2 not num")
+        } else { console.log(a+b);}
+    } catch(err) {
+    console.log("Error!",err);
+    }
+}
+
+addTwoNums(5,"5");
+console.log("work la");
+
+
+------------------------------------
+>>> Defensive programming  唔明
+//assuming that all the arguments a function will receive are of the wrong type, 
+// the wrong value or both.
+
+
+function letterFinder(word, match) {
+
+        var con1 = typeof(word)=="string" && word.length>=2;
+        var con2 = typeof(match)=="string" && match.length===1;
+
+        if (con1  && con2 ){
+                    for(i = 0; i < word.length; i++) {
+                        if(word[i] == match) {
+                            console.log('Found the', match, 'at', i)
+                        } else {
+                            console.log('---No match found at', i)
+                        }
+                    }
+        } else {
+                    console.log("Please pass correct arguments to the function.");
+        }    
+}
+// 要在 function 內，if 包住 for loop
+// var a = XXX && XXX;        if (con1 & con2)           (係boolean值)
+
+
+
+---------------------------------------------
+
+
+if (typeof(word) !== "string" || typeof(match) !=="string" ||word.length <2 || match.length !== 1) {
+    console.log("不合格");
+} else {
+    console.log("都得!");
+}
+
+
+
+
+=========================================================================
+=========================================================================
+=========================================================================
+
+=========================================================================
+=========================================================================
+=========================================================================
+
+>>>                     Week 3
+//FP paradigm works by keeping the data and functionality separate. 
+//OOP, works by keeping the data and functionality grouped in meaningful objects.
+"Object 物件不可比較    只是pass memory location"
+new String('plum') === new String('plum') // false    唔明
+"plum" === "plum" // true
+
+
+
+●●>>> Functional programming paradigm// FP
+
+預設會return undefined、好似字串咁可pass、內可有function、return function、side-effect :var在fun外面,結果隨時變;
+
+
+
+"Recursion"遞回函式// is when a function calls itself.
+solve problems that contain smaller sub-problems. 
+//A recursive function can receive two inputs: 
+a base case (ends recursion) or a recursive case (resumes recursion).
+//是因為函式堆疊(stack)在執行時有一個特性，當某個函式呼叫另一個函式時，需要等到裡面的函式執行完產生結果後，才會繼續回來執行自己的函式內容，
+後進先出(Last in First Out, LIFO)
+在寫遞回函式的時候一定記得設定終止條件，否則很容易跳不出來，導致無窮迴圈的情況產生。
+
+例子
+function factorial (num) {
+  if (num === 1) {
+    return num
+  } else {
+    return num * factorial(num - 1)
+  }
+}
+factorial(5)  //120
+
+
+
+-----------------------------------------------
+
+"scope"
+var globalVar ="global";
+
+function scopeTest(){
+    var localVar ="scoped to the function // local scope"
+    console.log(globalVar);
+}
+
+^
+以scope chain搵出外面既globalVar
+
+
+-----------------------------------------------
+
+●●>>>Constructors // 唔係個個用到 "new" key word
+//JavaScript has a number of built-in object types, such as:
+Math, Date, Object, Function, Boolean, Symbol, Array, Map, Set, Promise, JSON;
+also for object constructors of primitive type : String, Number, and Boolean.
+
+new Date();
+new Error();
+new Map();
+new Promise();
+new Set();
+new WeakSet();
+new WeakMap();
+
+
+例子    //大楷~~~~~~~~~~~~~~~~~~
+function TaxAmount (taxRate,salary,freeTax){
+    this.taxRate = taxRate;
+    this.salary = salary;
+    this.freeTax = freeTax;
+ }
+
+TaxAmount.prototype.getTax = function(){
+    this.taxMoney = this.salary-this.freeTax;
+    return this.taxMoney*this.taxRate;
+}
+
+
+
+var person1 = new TaxAmount(0.05,180000,132000);
+console.log(person1.getTax());
+
+
+
+
+
+
+
+
+
+
+
+
+
+function objectMaker(val) {
+    return {
+        prop: val
+    }
+}
+objectMaker(20);
+doubleIt(10).toString() //The above code returns the number 20 as a string, that is: "20".
+objectMaker( doubleIt(100) );
+// {prop: 200}
+
+
+
+--------------------------------
+let apple = new String("apple");
+apple; // --> String {'apple'}
+
+
+//Instead of using Array, Function, and RegExp constructors, you should use their
+// array literal,   function literal, and pattern literal varieties: 
+//[],                      ()               {}, and /()/.
+
+
+
+----------------------------------------------------------------------------------------------
+assignment 例子
+
+// Task 1: Build a function-based console log message generator 
+function consoleStyler(color,background,fontSize,txt) { 
+    var message = "%c" + txt; 
+    var style = color: ${color};; 
+    style += background: ${background};; 
+    style += font-size: ${fontSize};; 
+    console.log(message,style); 
+}  
+// Task 2: Build another console log message generator 
+function celebrateStyler(reason) { 
+    var fontStyle = "color: tomato; font-size: 50px"; 
+    if (reason == "birthday") { 
+        console.log(`%cHappy birthday`, fontStyle); 
+    } 
+    else if (reason == "champions") { 
+        console.log(`%cCongrats on the title!`, fontStyle); 
+    } else { 
+        console.log(message, style); 
+    } 
+} 
+// Task 3: Run both the consoleStyler and the celebrateStyler functions 
+consoleStyler('#1d5c63','#ede6db','40px','Congrats!'); 
+celebrateStyler('birthday'); 
+
+ // Task 4: Insert a congratulatory and custom message 
+function styleAndCelebrate(color,background,fontSize,txt,reason) { 
+    consoleStyler(color, background, fontSize, txt); 
+    celebrateStyler(reason); 
+} 
+// Call styleAndCelebrate 
+ styleAndCelebrate('ef7c8e', 'fae8e0', '30px', 'You made it!', 'champions');
+
+
+
+-------------------------------------------
+
+
+"First-class functions"  //function in JavaScript is just a value - almost no different then a string or a number.
+"Higher-order function"//accepts other functions as arguments  and/or   returns functions when invoked
+
+function addTwoNums(getNumber1, getNumber2) {
+    console.log(getNumber1() + getNumber2());
+}
+addTwoNums(specificNum, specificNum); // returned number is 84
+addTwoNums(specificNum, randomNum); // returned number is 42 + some random number
+
+"Pure functions and side-effects"// always return the same output, based on the input should not have side-effects. 
+addTwoNums(5,6); // 11
+
+"A side-effect" //is any instance where a function makes a change outside of itself.
+//changing variable values outside of the function itself, or even relying on outside variables 
+//calling a Browser API (even the console itself!) 
+
+
+
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
+●●>>> Object-oriented programming paradigm // OOP
+
+// OOP 幫助我們對現實生活中的對象進行建模。 當對像中的屬性和數據的分組具有邏輯意義時
+//(即屬性和方法“屬於在一起”)，它的效果最佳。
+//允許您編寫模塊化代碼，使您的代碼更加靈活，使您的代碼可重用。
+"inheritance" 繼承      extends -> super()
+class Eagle extends Bird 
+    { constructor (){super()/* ...class code here... */ }}
+
+"encapsulation"封裝     唔使知佢點work
+//"abc".toUpperCase(); 
+
+"abstraction"抽象       make it more generalized. 
+//An abstraction is about extracting the concept of what you're trying to do, rather than dealing with a specific manifestation of that concept. 
+
+"polymorphism"多形態      同名都可以相反功能
+//"multiple forms". An alternative translation might be: "something that can take on many shapes".
+const bicycle = {
+    bell: function() {
+        return "Ring, ring! Watch out, please!"
+    }
+}
+const door = {
+    bell: function() {
+        return "Ring, ring! Come here, please!"
+    }
+}
+
+-----------------------------------------------------
+例子
+var virtualPet = {
+    sleepy: true,
+    nap: function() {
+        this.sleepy = false
+    }
+}
+console.log(virtualPet.sleepy) // true
+virtualPet.nap()
+console.log(virtualPet.sleepy) // false
+
+--------------
+var book = {
+    clean : true,
+    author : "Noname",
+    year : 1999
+};
+console.log(book.clean);
+
+
+
+
+------------------------------
+
+●>>>"class"     <--- 記得pass野入()，constructor 
+/ this, extends / super , X "function" key word  ,  名.method();
+
+最好放 Default Parameters，唔驚錯   eg. constructor(name = "kt", hour=123) 
+
+
+class Bird {
+    useWings() {
+        console.log("Flying!")
+    }
+}
+class Eagle extends Bird {
+    useWings() {
+        super.useWings()            // super
+        console.log("Barely flapping!")
+    }
+}
+
+
+
+
+class Game {
+    constructor(name, hour){    // constructor(name = "kt", hour=123)
+        this.name=name;
+        this.hour=hour;
+    }
+    warning(){
+        console.log("I have beening playing "+this.name+" for "+this.hour+" hours!");
+    }
+}
+
+var monkey = new Game("the suruerials",33);
+console.log(monkey.warning());
+
+class SteamGame extends Game{
+    constructor(name, hour, money, player){
+        super(name, hour);
+        this.money=money;
+        this.player=player;
+    }
+    warningAgain (){
+        console.log(super.warning());  // <<<<<<<<<<<<    super.warning
+        console.log(this.player+ " ppl have beening playing "+this.name+" for "+this.hour+" hours! and spent "+ this.money);
+    }
+}
+
+var monkey2 = new SteamGame("the sur2",14,"$40",2);
+console.log(monkey2.warningAgain());
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+>>>De-structuring arrays and objects 拎出黎另存新檔                   唔明
+//I can only destruction something that already exists on an object using faulty spelling, including lower case won't work and will return an undefined value
+
+let {PI} = Math;
+PI;
+PI === 1;
+
+
+--------------------------------------------------------------------------
+
+●●>>>For of loops and objects
+"array 例子"
+const colors = ['red','orange','yellow']
+for (var color of colors) {
+    console.log(color);
+}
+
+
+for (var key of Object.keys(bird))  //  因 bird 是obj
+for (var key in bird)               //  in all --> 佢媽媽(prototype)都出埋
+
+console.log(key+": "+ bird[key]);
+
+
+
+
+
+//for of loop cannot work on an object directly, since an object is not iterable可重复的
+Object.keys(obj名稱), Object.values(obj名稱), Object.entries(obj名稱)
+
+
+例子 // 巢陣 get an array of arrays, where each array item has two members, the first being a property's key, and the second being a property's value.
+const car4 = {
+    speed: 400,
+    color: 'magenta'
+}
+console.log(Object.entries(car4)); // [ ['speed', 400], ['color', 'magenta'] ]
+
+
+"obj 例子"
+var clothingItem = {
+    price: 50,
+    color: 'beige',
+    material: 'cotton',
+    season: 'autumn'
+}
+
+// Object.keys(clothingItem); // [ 'price', 'color', 'material', 'season' ]
+
+for( var key of Object.keys(clothingItem) ) {
+    console.log( key+":", clothingItem[key])
+}
+
+
+
+
+------------------------------------------------------------------
+>>>Template literals ``
+
+好處：
+>不必再用咁多 " " + 號
+>可分成多行 allow for multi-line strings  "allows for expression evaluation"
+>Some additional: nested template literals and tagged templates
+
+let greet = "Hello";
+let place = "World";
+console.log(`${greet} ${place} !`) //display both variables using template literals
+//Hello World !
+
+`Hello,
+World
+!
+`
+
+//it's possible to perform arithmetic operation inside a template literal expression
+console.log(`${1 + 1 + 1 + 1 + 1} stars!`)  //5 stars!
+
+
+var book = `H"pooiop"P`;
+var author = `JK`;
+console.log(`${book} is written by ${author}`);
+
+
+=========================================================================
+=========================================================================
+=========================================================================
+
+>>>Data Structures
+objects
+arrays 有 foreach, filter, map
+Map
+Set
+//其他: Queues、Linked lists (singly-linked and doubly-linked)、Trees、Graphs
+
+
+
+>>> "array"
+----------> forEach  
+//forEach() method accepts a function that will work on each array item. 
+//That function's first parameter is the current array item itself, and the second (optional) parameter is the index.
+
+const fruits = ['kiwi','mango','apple','pear'];
+function appendIndex(fruit, index) {
+    console.log(`${index}. ${fruit}`)
+}
+fruits.forEach(appendIndex);
+
+
+
+
+----------> filter
+// filter() method. It filters your arrays based on a specific test. 
+
+const nums = [0,10,20,30,40,50];
+nums.filter( function(num) {
+    return num > 20;
+})
+
+
+
+
+----------> map    當數學咁計數
+//map each array item over to another array's item, based on whatever work 
+//is performed inside the function that is passed-in to the map as a parameter. 
+
+const nums = [0,10,20,30,40,50];
+function numsd10 (nums) {
+    return nums / 10
+}
+console.log(nums.map(numsd10));
+
+
+
+
+
+=============================================
+
+>>> "Map" //like array, iterable
+//maps: any value can be used as a key. // 而objects, keys can only be strings or symbols.
+
+let bestBoxers = new Map();
+bestBoxers.set(1, "The Champion");
+bestBoxers.set(2, "The Runner-up");
+bestBoxers.set(3, "The third place");
+
+console.log(bestBoxers); //Map(3) {1 => 'The Champion', 2 => 'The Runner-up', 3 => 'The third place'}
+
+bestBoxers.get(1); // 'The Champion'
+
+
+
+
+>>> "set"
+Sets are ordered collections of unique items.
+//set. This is another collection where each item in the collection must be unique. For example, if you try to add a non unique item to a set, this operation will simply not be run. In other words, no errors will be thrown and no updates will be made to a set. In this video, you learned about some of JavaScript's most common data structures, such as, objects, arrays, maps and sets, which one you need to use depends on the task at hand. Next time you have a coding task, try to think of the data structures you might use.
+
+
+const repetitiveFruits = ['apple','pear','apple','pear','plum', 'apple'];
+const uniqueFruits = new Set(repetitiveFruits);
+console.log(uniqueFruits);
+//{'apple', 'pear', 'plum'}
+
+
+
+---------------------------------------------------------------------
+
+>>>spread operator ... 爆開佢
+var top3 = ["a","b","c"];
+function visitPlace(place1,place2,place3){
+    是但啦
+}
+visitPlace (...top3);
+
+
+
+
+
+>>>Rest operator
+//take items from an array and use them to create a separate sub-array. >> 變成variables
+
+var top7 =["a","b","c" 共7個];
+var [first,second,third, ...secondVisit] = top7;
+
+或 
+
+唔明
+function addTaxToPrices(taxRate, ...itemsBought){
+    return itemsBought.map(item => taxRate*item)
+}
+var shoppingCart = addTaxToPrices(1.1,45,4,22,53);
+
+
+
+-------------------------
+應用層面
+//Join arrays, objects using the spread operator
+
+var favcolors =["red","orange","blue"];
+var hatecolors = ["green","yellow"];
+var favandhatecolors = [...favcolors, ...hatecolors];
+console.log(favandhatecolors);
+
+//add
+
+hatecolors = [...hatecolors, "black", "white"];
+
+//Convert a string to an array using the spread operator
+
+const greeting = "Hello";
+const arrayOfChars = [...greeting];
+console.log(arrayOfChars); //  ['H', 'e', 'l', 'l', 'o']
+
+//Copy either an object or an array into a separate one
+
+const car1 = {
+    speed: 200,
+    color: 'yellow'
+}
+const car 2 = {...car1}
+
+car1.speed = 201
+
+console.log(car1.speed, car2.speed)
+
+
+
+=========================================================================
+=========================================================================
+
+●●>>>DOM         example.com
+//應用 Get their geolocation,Interact with maps,Play games in the browser, Handle all kinds of user-triggered events, regardless of the device,Verify form input before sending it to the backend of a webapp
+
+//極簡：
+document.querySelector(".classname").addEventListener("click", function handlingclick(){
+    console.log("你好");
+})
+document.querySelector(".classname").style.backgroundColor ="red";
+
+
+
+//詳
+//例1
+var h1 = document.querySelector("h1");
+
+document.querySelector("button").addEventListener("click",function(event) {
+    h1.innerHTML = "";
+    h1.innerHTML = "你好";
+}) 
+
+//例2
+var msg = `<h2> hi! </h2>`;
+document.querySelector("p").innerHTML = msg;
+
+//例3
+var target = document.querySelector("body");
+
+target.addEventListener("click", handlingclick); // 先後都得
+function handlingclick(event){
+    console.log("hi");
+}
+
+
+---
+getElementById
+getElementsByClassName
+querySelectorAll (可取全部)
+
+
+
+textContent  實際取得節點中的文字內容 會忽略換行  照出 
+innerText   經CSS渲染的文字           回傳的會是換行的結果     display:none   冇 
+innerHTML   <p>
+outerHTML   <div><p></p></div>
+
+                      
+
+
+
+
+
+
+
+--------------------
+//新野
+" createElement() ,setAttribute(), appendChild()附加子項 ,insertBefore()  "
+remove() removeEventListener()  style   
+
+Event:
+mouseover mouseout  mousemove   blur  focus
+ 
+
+
+//例子1 Web page content update 直接建立新h1
+var h1 = document.createElement('h1')
+h1.innerText = "Type into the input to make this text change"
+
+var input = document.createElement('input')
+input.setAttribute('type', 'text')
+
+document.body.innerText = '';
+document.body.appendChild(h1);
+document.body.appendChild(input);
+
+input.addEventListener('change', function() {
+    h1.innerText = input.value
+})
+
+
+
+//例子2
+var arr = ["example domain","1st","2nd","3rd"];
+
+function click1(){
+switch (document.querySelector("h1").innerHTML){
+  case arr[0]:
+    document.querySelector("h1").innerText = 	arr[1]
+    break;
+  case arr[1]:
+    document.querySelector("h1").innerText = 	arr[2]
+    break;
+  case arr[2]:
+    document.querySelector("h1").innerText = 	arr[3]
+    break;
+  default:
+    document.querySelector("h1").innerText = 	arr[0]
+    break;
+  }
+}
+
+  document.querySelector("h1").addEventListener("click", click1);
+
+
+---------------------------------------------------
+
+>>>JSON    = string ，要double "" ，不可''。 不可有function、comment
+
+// 轉 JSON -> obj
+var obj = JSON.parse(jsonString);
+
+// 轉 obj -> json string
+var str = JSON.stringify(obj);
+
+例子
+'{"color":"red", "nestedObject": { "color": "blue" } }' 
+'["one", "two", "three"]'
+'[{ "color": "blue" }, {"color: "red"}]'
+
+
+//所有 JSON 代碼都是 JavaScript，但並非所有 JavaScript 代碼都是 JSON。
+//JSON is just a string - but there are rules that it must follow
+//Only a subset of values in JavaScript can be properly stringified to JSON and parsed from a JavaScript object into a JSON string.These values include:
+primitive values:   strings, numbers, bolleans, null
+complex values:      objects and arrays (no functions!)
+Objects have double-quoted strings for all keys
+Properties are comma-delimited both in JSON objects and in JSON arrays, just like in regular JavaScript code
+String properties must be surrounded in double quotes. For example:
+
+
+
+=========================================================================
+●●>>>拎data fetch
+//加載網頁並使其可供用戶查看的方法。這是另一種允許 Web 開發人員快速、流暢地加載網頁而無需刷新頁面的方法。
+F12 > network > fetch 
+
+fetch(request, {mode: 'cors'});
+.then(Response=>Response.text())
+.then(Response=>console.log(Response));
+
+
+實例：
+//  html內：   <div id="result"></div>
+//網上Data樣子：
+[
+    {  //data[0]
+        "name": "3310",
+        "price": 100
+    },
+    {  //data[1]
+        "name": "3312",
+        "price": 120
+    }
+]
+
+//拎野
+function getData(){
+    fetch(url, {mode:'cors'})
+    .then(res=> res.json())    //或 純文字：  response.text() 
+    .then(data=> {
+        console.log(data)
+        
+        var result = document.querySelector("#result"); //把data放在html上顯示
+        result.innerHTML = ""; // 清空畫面先
+        for (var i =0;i<data.length;i++){   //用 for loop 出
+        var product = data[i];
+        result.innerHTML += "<div>"+product.name+ product.price +"</div";
+    }
+    });
+    .catch(error=>{
+    console.log('Request failed', error)  
+    })
+}
+
+
+
+
+-----------------------
+
+ajax 四步
+new XMLHttpRequest()
+open("get",URL,true)                (method,URL, 異步? @true)
+onreadystatechange                    4,  200-300 ||304
+send(null)                           (請求體 @null)
+
+
+
+用途：
+例如當我們想要將 Javascript 代碼包含到 HTML 文檔中時，或者當我們想要在網站上創建動畫時。
+
+
+例子
+function ajaxPromise(){
+    let promise = new Promise ( (resolve,reject) =>{
+        let xhr = new XMLHttpRequest();          
+        xhr.open("get","egg.gif",true)        
+        xhr.onreadystatechange = () => {      
+            if (xhr.readyState===4) {
+                if (xhr.status >=200 &<300 || xhr.status ===304){
+                    resolve(xhr.responseURL);
+                } else{
+                    reject(new Error (xhr.statusText));
+                }
+            }
+        }
+        xhr.send(null)              
+    });
+    return promise;
+}
+
+
+
+Ajax 是一個高級 JavaScript 庫。可以使網絡上的數據加載速度更快。Ajax 不允許您使用 JavaScript 完成所有操作，但它確實為您提供了一些很棒的功能，例如數據綁定。它只能在一種瀏覽器中使用。
+Fetch 將加載所有網站數據。因此，當您單擊某個特定部分時，您不需要另外的加載時間來顯示網頁屏幕。
+jQuery 是一個 JavaScript 庫，可用於使許多事情變得更容易，例如導航、導航欄、文本格式化、DOM 操作等。jQuery 是一個開源 JavaScript 庫，可以幫助我們創建交互式網站。我們可以使用 jquery 使我們網站頁面之間的交互比以往更加動態和容易。當我們將 jquery 包含到我們的網頁中時，它將幫助我們編寫 javascript 代碼，從而增強我們網站上的用戶體驗。我們可以使用 jquery 在網站頁面之間進行交互、創建動畫等等。Jquery 廣泛用於開發 Web 應用程序。它可用於創建任何類型的應用程序，但最常用於創建動態網站。對於想要無需編寫任何代碼即可構建功能強大且響應迅速的網站的 Web 開發人員來說，Jquery 是完美的工具。
+=========================================================================
+=========================================================================
+=========================================================================
+
+=========================================================================
+=========================================================================
+=========================================================================
+
+課程 5-3 version control git github cmd
+
+https://www.youtube.com/watch?v=USjZcfj8yxE
+https://www.youtube.com/watch?v=nhNq2kIvi9s
+
+//The Command line
+windows+R	> devmgmt.msc (上網)
+
+轉位	    cd
+開新夾	    mkdir
+開新file	type nul >   或 echo.>
+開啟檔  	code
+show內容    ls
+顯路徑	    pwd
+copy		cp
+move	    mv
+remove  	rm
+再黎過cmd	clear
+
+//Git
+開新空白folder 記得剔隱藏的檔案
+
+git init
+git checkout -b main
+
+git add . // git add day/day4.html
+git commit -m “求其comment”
+git push -u origin main
+
+git config --global user.email “@”
+git config --global user.name “XXXX”
+git remote add origin https://github.com......git
+
+
+
+
+
+
+
+=========================================================================
+
+week 4      >>>node.js & NPM (package manager / module)
+裝 Node.js > 裝 npm (Node Package Manager) > npm install 安裝唔同插件
+
+npm install     
+npm i react     npm i webpack         npm i bootstrap-vue       npm i @angular/core
+
+/* 要學識：
+Installation command to install npm modules in your project 
+Installing a package as a dev dependency 
+Start command 
+Updating npm version 
+Navigating around the package.json file 
+ */
+
+
+
+-----
+
+JavaScript modules  ES6 /* 預設 <script type="text/javascript"> <script> */    // 唔關事 access to my script is blocked by a built in browser security feature called cross origin resource sharing
+
+html body內
+// <script type="module"> 
+    import{function名} from "./file名.js";
+    function名();      //關script tag
+
+外file 
+export var function testing () {}
+
+或
+var function testing () {........};
+export default testing;
+
+可以backend、desktop application、可以command line、可以下載好多    (package.json)   #install     lowerCase、可以share畀人
+
+--------------------------------------
+
+>>>JEST red > green > refactoring //(update而不影響結果)
+terminal填：
+npm init -y
+//得到 package.json
+npm install --save-dev jest
+//打開 package.json ，可以看到剛剛下載的 Jest 已經被記錄在 devDependencies 中了：
+scripts: {
+    "test": "jest"
+}
+npm run test //對應指令  //加新file  本身file addFive.test.js
+const addFive = require('./addFive');
+npm install jest -g  // -g 代表全域
+
+例子：加兩條字串
+expect(functionName("abc","def")).toBe("abcdef");  // green
+expect(functionName(1,2)).toBe("12");   //  red  (唔pass)
+-------------------------------------
+Assignment:
+
+var timesTwo = function (a) {
+    return a * 2;};
+module.exports = timesTwo;
+-----------
+const { default: TestRunner } = require("jest-runner");
+const timesTwo = require('./timesTwo');
+
+test('returns the number times 2', () => {
+    expect(timesTwo(10)).toBe(20);
+});
+---------------
+>>>TDD (Test-Driven Development)
+=========================================================================
+=========================================================================
+=========================================================================
+=========================================================================
+
+
+
+course 5-4 HTML and CSS in depth
+W1
+// sementic, meta tags
+
+
+// input, form
+>> botton submit password email tel text radio checkbox range number // date time week month Datetime-local
+>> list (data) datalist option  select optgroup(label="") option 
+>> file image search url  //multiple 
+>> reset hidden 
+>> textarea // readonly cols rows form maxlength minlength
+//required maxlength / minlength  min="1" max="10" 
+pattern : eg. 控制tel num +852 //<input type="tel" id="phone" name="phone" pattern=”^(?:0|\+?44)(?:\d\s?){9,10}$” > 
+
+//action ~~~ /有斜線，絕對，取代
+<form action="/login" method="post"></></>
+meta.com/profile >> meta.com/login
+
+<form action="login" method="post"></>
+meta.com/profile >> meta.com/profile/login
+
+
+<input type="功用" name="問題種類" id="選項" value="選項">選項
+
+<div>
+    <label for="booking_ppl">Number of People</label>
+    <input type="range" name="booking_ppl" id="booking_ppl" min="1" max="8" value="4" oninput="this.nextElementSibling.value=this.value">
+    <output>4</output>
+</div>     </></>
+ //oninput="this.nextElementSibling.value=this.value 
+
+//hidden
+<input type="hidden" id="custId" name="custId" value="3487"></>
+
+//button
+<input type="button" value="Click me" onclick="msg()" />
+或
+<button onclick="alert('Are you sure you want to continue?')"> 
+    <img src="https://yourserver.com/button_img.jpg" 
+        alt="Submit the form" height="64" width="64">
+</button> 
+
+<select name="" id="food">
+    <optgroup label="Lunch">
+        <option value="Set Lunch">Set $188</option>
+        <option value="Set Lunch">Set $288 @ 2</option>
+    </optgroup>
+    <optgroup label="Dinner">
+        <option value="Set Dinner">Set $480</option>
+        <option value="Set Dinner">Set $780 @ 2</option>
+    </optgroup>
+</select>
+
+<label> //用label包住
+    <input type="checkbox" name="" id="policy" required> I agree to the cancellation policy
+</label>
+
+select >>  <option>Set $188</option>
+input range >> <option value="1" label="1"></option></></>
+
+
+
+// media, iframe
+<iframe src="" name width height allow="fullscreen; geolocation; camera; microphone" title="An embedded document about XXXX"></iframe>
+no-referrer origin strict-origin
+allow=" " //camera 'none'; microphone 'none'; payment 'none'
+snadbox << empty 所有都唔畀 // allow-downloads allow-forms allow-modals allow-orientation-lock allow-popups allow-presentation allow-scripts
+
+
+// canvas
+//1 實作隨機驗證碼功能 verification code
+
+!!!!!!!!!!!! 要記得var ctx
+
+function draw(){
+    var canvas = document.getElementById('tutorial');
+if(canvas.getContext){
+    var ctx = canvas.getContext('2d');
+}
+}
+
+
+// 2 
+function animate(){
+    window.requestAnimationFrame(animate);
+}
+window.requestAnimationFrame(animate); 
+
+
+
+
+// 3 color pattern
+for (var i=1;i<10;i++){
+    for (var j=1;j<10;j++){
+
+ctx.fillStyle = `rgb(${255-42*j},${255-42*i},0)`;
+ctx.fillRect(25*j,25*i,25,25);
+}} 
+
+
+//cheatsheet:
+ctx.clearRect(x, y, width, height); //清除
+
+//文字
+ctx.font = "50px serif";
+ctx.fillText(text, x, y, maxWidth);
+
+ctx.fillStyle = color / gradient / pattern; //  = "rgb(0,0,255)"  Style 大階
+ctx.fillStyle = `rgb(${},${},0)`; //255~0
+
+//畫方
+ctx.fillRect(x, y, width, height);
+ctx.fillRect(0, 0, canvas.width, canvas.height); //不用單位 或=
+
+//畫圓
+ctx.arc(x, y, radius, startAngle, endAngle, 非必須counterclockwise)  // ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+
+//開畫
+ctx.strokeStyle = "blue";
+ctx.beginPath();
+ctx.moveTo(20, 20);
+ctx.lineTo(200, 20);
+ctx.closePath();
+ctx.stroke();   空心
+
+ctx.fill()      實心
+
+
+// SCSS (模組)
+
+
+
+W2 
+//flex, grids
+
+
+//css selectors
+> + ~ 
+
+//css effect, text/transform
+
+
+//animation:
+selector{
+    transform: rotateZ(360deg);
+    transition: 1.5s;
+    animation: move1 28s linear infinite;
+}
+
+@keyframes move1 {
+    from{ 
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes identifier { 
+    0% {transform: rotate(100deg);} 
+    30% {opacity: 1;} 
+    50% {opacity: 0.50;} 
+    70% {opacity: 1;} 
+    100% {transform: rotate(50deg);} 
+}
+
+
+//debug
+.stylelinttrc.json
+
+{ 
+"rules": { 
+        "alpha-value-notation": "number", 
+        "selector-type-case": "lower", 
+        "color-no-hex": true 
+} 
+} 
+
+error logs、debug javascript、inspect HTTP、
+
+Browser-specific CSS
+@media screen and (-webkit-device-pixel-ratio:0) and (min-resolution:.001dpcm) {selector{color:red;}}
+//可以Set做只有某某browers 先有此CSS
+!!工具：modernizer  reset.css   normalize.css
+
+
+//UI testing
+automated user acceptance testing, cross-device testing, and visual regression testing.
+唔同device都要Test
+
+Planning the user experience
+>> UX audits and scenario mapping     
+>> Stakeholder interviews     
+>> User research     
+
+重點：improve access to info
+>> 諗 main section、navbar 有咩
+
+W3
+// placeholder
+// UX
+
+
+=========================================================================
+=========================================================================
+=========================================================================
+=========================================================================
+
+course 5-5 React basic
+W1
+常用錯誤/注意:
+-- App  Heading  大階 <Heading  />
+-- 記得 import野
+-- return()
+-- JSX 只可一個有一個parent element  一個div包晒先,, className,, 要用 {}
+-- 可 comment parent 外 // comment  內要  {/*  */}
+-- {onClick}
+
+====================
+安裝                  ↓呢個係project名稱 
+npm init react-app firstapp 
+>> cd firstapp >> npm start 
+>> click Open Development server. 
+>> 
+DOC
+最重要 index.js
+測試 App.test.js, setupTests.js, and the reportsWebVitals.js are files related to the apps performance and testing
+.gitignore file //not specific to React. This means that other systems use this file
+package.json file // lists information pertaining to my app, helps npm rebuild the app on another machine. 
+package-loc.json // holds the list of all dependencies with a specific versions.  has all the information for npm to be able to rebuild those files reliably
+
+
+//export a module in JavaScript.
+1) 單一 default 同file一樣名!!!                                  2) 多個  named  !== file名
+export default function addTwo(a, b) {                         export function addTwo{}             
+}                                                              export function addThree{}  
+
+function addTwo(a, b) {}                                       export { addTwo, addThree };
+export default addTwo;
+
+
+//import module  將addTwo 導入 React app
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!不必寫 addTwo.js
+1)  單一                                                        2) 多個
+import addTwo from "./addTwo";                                  import {addTwo} from "./addTwo";
+
+
+//organize files (Grouping by features /by file type) 
+最簡單最好, 減少nest files
+adding a components folder and moving all your components into it
+organize your layouts by splitting them into meaningful areas of the page, and then code those meaningful areas as separate components. that would constitute the right amount of modularity.
+eg. in terms of how a person would describe a website, there's a menu, a footer, the shopping cart, etc.
+
+src/
+    components/
+        Nav.js
+        Promo.js
+        Intro1.js
+        Intro2.js
+        Intro3.js
+        Footer.js
+    App.js
+    App.test.js
+
+several components => module
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!! 未明晒
+props 
+//is a feature of React that essentially allows you to hold information about the UI in the browser.
+
+//props.children 一層包一層，更加 dynamic
+JSX element wrapping some other JSX element, you can easily understand that its all just props.children in the background.
+<XX children={ 再有一層 <XX /> } />
+
+上層
+import Heading from './Heading'
+
+function App(){
+    return(
+    <div>
+        <Heading children={<Promo discount="50%" />} />
+    </div>
+    );
+}
+
+
+//<Bag children={<Apples color="yellow" number="5" />} />
+
+中層
+function Heading(props) {
+    return (
+        <div>
+            {props.children}
+        </div>
+    )
+}
+export default Bag
+
+
+下層
+function Promo(props){
+    return(
+    <h1> {props.discount} off!</h1>
+    );
+}
+
+
+
+
+// Styling JSX elements  
+"vanilla JavaScript" is often used to describe the plain, regular JavaScript language syntax
+
+1)CSS html head link
+2)inline  <h1 style={}>  >> 再加 style object literal fontSize:"40px"  camelCased
+<div>
+    <h1 style={{color:"tomato", fontSize:"40px", fontWeight:"bold"}}>
+        {props.heading}
+    </h1>
+</div>
+
+3)
+const styles={
+    color:"red",
+    fontSize:"40px"
+}
+
+<h1 style={styles}></h1>
+
+=========================================================================
+簡化
+//component changed from a function declaration to a function expression 
+
+function NumBillboard(props) {
+    return (
+      <>   //冇 div都得
+        <h1>{props.num}</h1>
+      </>
+    )
+  }
+
+const Nav = function(props) { //anonymous (nameless) function
+    return (
+        <ul>
+            <li>{props.first}</li>
+        </ul>
+    )
+}
+render,code... 其他same
+<Nav first="Home" />
+
+
+const Nav = props =>{   // (props,sth,sth) for any number of parameters other than a single parameter, using parentheses around parameters is compulsory.
+    return (
+        <ul>
+            <li>{props.first}</li>
+        </ul>
+    )
+}
+
+const Nav = () => {} // 如冇props empty ()
+
+const Nav = () => <ul><li>Home</li></ul>   //同一行code才有隱式return
+
+
+// other examples
+[10, 20, 30].forEach(item => item * 10)
+
+
+
+// Ternary operators and functions in JSX
+comparison ? true : false
+<h1>{Math.random() >=0.5 ? "Over 0.5!": "under 0.5!" } </h1>
+
+
+// 實例
+const location = Boston;
+const result = <p>{location}</p>;
+
+const url ="photo.png";
+const style = .......
+const result = <img src={url} style={style}> </img>
+
+=========================================================================
+=========================================================================
+
+W2 Data & state
+
+//Events
+//比較
+html
+<button onclick="handleClick()"> Click la </button>
+
+JSX
+<button onClick={handleClick}> Click la </button>
+
+html        JSX
+onclick   / onClick 大階
+
+
+let lightModeOn=false;
+<button onClick={() => console.log('second example')}>
+    lightModeOn = !lightModeOn
+</button>
+
+
+
+function Btn(){
+    const handleClick = () => {
+    console.log('clicked')}  // !!!!!!!!! 重點 return之外 要寫return嗎?
+
+    return(
+    <button onClick={handleClick}> Click me</button>  // {}包住function
+    );
+}
+
+
+
+
+//上層 Parent
+
+const data ={
+    heading="50% off!",
+    callForAction="Buy Now!"
+}
+function Promo(){
+    return(
+        <div>
+            <PromoHeading heading={data.heading} callForAction={data.callForAction} />
+        </div>
+    );
+}
+
+//下層 Children
+
+function PromoHeading(props){
+    return(
+    <h1> {props.heading} </h1>
+    );
+}
+
+=========================================================================
+
+
+// useState (React hook)
+//to track any type of data. It could be strings, numbers, arrays, Booleans or objects
+One key benefit of hooks is that they solve the problem of unnecessary code reuse across components
+is used to manage the state within a component and keep track of it and its built directly into React 
+
+// (array destructuring)  >>>>>>>> 一次過assign variables
+例如
+const fruits = ['apple','pear'];
+const [fruit1,fruit2] = fruits;
+咁就係 fruit1 = 'apple'  fruit2 = 'pear'
+
+Props 組件外, data is outside the component and is immutable, meaning it cannot change.      
+
+State (react係reactive to state)
+State 組件內data, 可控可變, 如果state更新, 都會令component更新, 依賴於該狀態的所有其他組件也會自動更新。
+--在return 外 !! Hooks can be called only at the top level and only from React functions.
+--用props 黎pass, 並非直接 pass state
+--改variables 才可改state
+// state data is a components internal data, which it can control and mutate. , state as a component's internal data that determines the current behavior of a component. It's often used to store data that affects the behavior of a component. //  allows components to stay in sync with each other and ensure that your app behaves as intended, for example, if one component updates its State // / a component sends its State to its children by using props (parent component is NOT able to pass its state onto children components), child component will actually receive the data via properties, passing state thats set in a parent stateful component
+
+
+===========
+實作 const [state,setState] = useState(initialState) //咩名都得
+
+
+import React,{useState} from 'react';
+
+const [product,setProduct] = useState('1水果');
+/*       ^state variable with an initial value
+                   ^function to set that state var value */
+//useState() 會 return一個array, 然後我地取返array既值
+
+const handleClick = () =>{
+    setProduct('2生果')  // 就會自動更新
+    console.log(product) <--- 仲係會顯示 '1水果', 運行先, 才觸發更新, 再按就會顯示 '2生果'
+}
+
+
+
+
+
+</script></body></html>
+//=========================================================================
+重點記得：(event)
+== === != !==
+""
+If you had a complete project with a modern JavaScript tooling setup, you'd be using let or const, but this is just a quick demo, so using var in this case is ok.
+============== $ 等於 func in jQuery，   $ 等於 var ???
+In MySQL, backticks quote names, while single quotes create strings.
+
+重要知識：
+1-- obj不可比較：The pear variable(primitive value) always more performant than the apple variable (object)Besides being more performant, due to the fact that each object in JavaScript is unique, you can't compare a String object with another String object, even when their values are identical.In other words, if you compare new String('plum') === new String('plum'),you'll get back false, while "plum" === "plum" returns true. You're getting the false when comparing objects because it is not the values that you pass to the constructor that are being compared, but rather the memory location where objects are saved.
+2-- The  document  object holds the entire structure of the active webpage in the browser's memory.
+3-- => arrow function 同一行code才有隱式return //implicit return. However, it only works if it's on the same line of code as the arrow itself. In other words, the implicit return works if your entire component is a single line of code.
+
+var: 是「可」重複宣告相同變數，區塊語法用var宣告可能會感染全域變數。
+let: 是「不可」重複宣告相同變數，其作用域僅在「區塊作用域(Block Scope)」，一旦離開則會無作用，顯示無定義。
+const: 特性同let，但更嚴謹。一旦變數宣告為常數後，則無法再賦新值。
